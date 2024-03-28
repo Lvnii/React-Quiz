@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import useQuiz from "../../Store/QuizContext";
 import QuizItem from "../QuizItem/QuizItem";
+import './QuizList.css'
 
 const QuizList = () => {
-    const { data, loading, getData, handleQuizAnswer } = useQuiz();
+    const { data, loading, getData, handleQuizAnswer, } = useQuiz();
 
     console.log(data)
 
@@ -14,21 +15,18 @@ const QuizList = () => {
     return(
         <div className="quiz-list-container">
             {loading ? <p>Loading...</p> : (
-                <ul>
-                    {data.map((item) => {
+                <ul className="questions-list-ul">
+                    {data.map((item, index) => {
                         return (
                             <li 
                                 className="quiz-item-li"
                                 key={item.id}
                             >
                                 <QuizItem 
-                                    id={item.id}
+                                    {...item}
                                     questionText={item.question}
-                                    answers={item.answers}
-                                    difficulty={item.difficulty}
-                                    category={item.category}
                                     handleQuizAnswer={handleQuizAnswer}
-                                    answeredCorrectly={item.answeredCorrectly}
+                                    index={index}
                                 />
                             </li>
                         )

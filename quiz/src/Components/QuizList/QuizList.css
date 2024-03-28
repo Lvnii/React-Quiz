@@ -1,0 +1,18 @@
+.quiz-list-container {
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-list-container .questions-list-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quiz-list-container .questions-list-ul .quiz-item-li {
+    padding: 10px 0px;
+    border-bottom: 1px solid black;
+}

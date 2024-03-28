@@ -1,0 +1,12 @@
+.answer-item {
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.answer-item.correct {
+    color: green;
+}
+
+.answer-item.incorrect {
+    color: red;
+}

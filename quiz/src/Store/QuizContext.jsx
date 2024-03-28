@@ -37,6 +37,8 @@ export const QuizContextProvider = (props) => {
     }, [data.result]);
 
     const handleQuizAnswer = useCallback((questionId, answerId) => {
+        const foundQuestion = data.find(item => item.id === questionId)
+        if (foundQuestion.isAnswered) return
         setData((prevState) => {
             return [...prevState.map((item) => {
                 if(questionId !== item.id) {
@@ -44,17 +46,19 @@ export const QuizContextProvider = (props) => {
                         ...item
                     }
                 } else {
-                    let answered = item.answers.find((answerItem) => answerItem.id === answerId)
+                    let answered = item.answers.find((answerItem) => 
+                    answerItem.id === answerId)
                     
                     return {
                         ...item,
                         isAnswered: true,
+                        userAnswer: answerId,
                         answeredCorrectly: answered.isCorrect
                     }
                 }
             })]
         })
-    }, [])
+    }, [data])
 
     const getData = useCallback(async () => {
         if(loading) return
