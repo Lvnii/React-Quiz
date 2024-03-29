@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useQuiz from "../../Store/QuizContext";
 import QuizItem from "../QuizItem/QuizItem";
+import Loader from "../Loader/Loader";
 import './QuizList.css'
 
 const QuizList = () => {
@@ -14,7 +15,7 @@ const QuizList = () => {
 
     return(
         <div className="quiz-list-container">
-            {loading ? <p>Loading...</p> : (
+            {loading ? <Loader /> : (
                 <ul className="questions-list-ul">
                     {data.map((item, index) => {
                         return (

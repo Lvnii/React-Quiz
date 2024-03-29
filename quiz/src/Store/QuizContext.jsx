@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext } from "react";
 import { useState } from "react";
+import Swal from 'sweetalert2';
 
 const QuizContext = createContext({});
 
@@ -70,7 +71,12 @@ export const QuizContextProvider = (props) => {
             setData(restructureQuizArray(data.results))
             setLoading(false)
         } catch (error) {
-            alert(error.message)
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'Okay'
+              })
             setLoading(false)
         }
     }, [loading, restructureQuizArray])
